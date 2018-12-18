@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ListContainer.dart';
 import 'UserDrawer.dart';
+import 'HomeBottomBar.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -44,27 +45,7 @@ class Home extends StatelessWidget {
           ],
         ),
         drawer: UserDrawer(),
-        bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed, // 三个以上的items类型需要重新设值!
-            fixedColor: Colors.black,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.explore),
-                title: Text('Explore'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.history),
-                title: Text('History'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                title: Text('List'),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text('My'),
-              ),
-            ]),
+        bottomNavigationBar: HomeBottomBar(),
       ),
     );
   }
