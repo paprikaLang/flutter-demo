@@ -42,7 +42,8 @@ class Home extends StatelessWidget {
             Icon(Icons.directions_bike, size: 100.0, color: Colors.black26),
           ],
         ),
-        drawer: Drawer( // 自动添加 navigator leading iconbutton
+        drawer: Drawer(
+          // 自动添加 navigator leading iconbutton
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
@@ -53,11 +54,22 @@ class Home extends StatelessWidget {
               //   ),
               // ),
               UserAccountsDrawerHeader(
-                accountName: Text('TIYO', style: TextStyle(fontWeight: FontWeight.bold)),
+                accountName:
+                    Text('TIYO', style: TextStyle(fontWeight: FontWeight.bold)),
                 accountEmail: Text('langtianyao1102@gmail.com'),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage('https://paprika-dev.b0.upaiyun.com/LlVRb2Ud8wxftuYafiVzXdFOnwbQKciSMVvpIaCL.jpeg'),
+                  backgroundImage: NetworkImage(
+                      'https://paprika-dev.b0.upaiyun.com/LlVRb2Ud8wxftuYafiVzXdFOnwbQKciSMVvpIaCL.jpeg'),
                 ),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(255, 255, 255, 0.5),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg'),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                            Colors.orange[200].withOpacity(0.5),
+                            BlendMode.hardLight))),
               ),
               ListTile(
                 title: Text('Message', textAlign: TextAlign.right),
