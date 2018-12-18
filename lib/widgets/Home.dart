@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ListContainer.dart';
+import 'UserDrawer.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -42,56 +43,28 @@ class Home extends StatelessWidget {
             Icon(Icons.directions_bike, size: 100.0, color: Colors.black26),
           ],
         ),
-        drawer: Drawer(
-          // 自动添加 navigator leading iconbutton
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              // DrawerHeader(
-              //   child: Text('Tiyo'.toUpperCase()),
-              //   decoration: BoxDecoration(
-              //     color: Colors.grey[200],
-              //   ),
-              // ),
-              UserAccountsDrawerHeader(
-                accountName:
-                    Text('TIYO', style: TextStyle(fontWeight: FontWeight.bold)),
-                accountEmail: Text('langtianyao1102@gmail.com'),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://paprika-dev.b0.upaiyun.com/LlVRb2Ud8wxftuYafiVzXdFOnwbQKciSMVvpIaCL.jpeg'),
-                ),
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 255, 255, 0.5),
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            'https://paprika-dev.b0.upaiyun.com/om3jkIT4nVK8WwYN8K9WyxEghHDk36WpEfgY8Ta3.jpeg'),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                            Colors.orange[200].withOpacity(0.5),
-                            BlendMode.hardLight))),
+        drawer: UserDrawer(),
+        bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed, // 三个以上的items类型需要重新设值!
+            fixedColor: Colors.black,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.explore),
+                title: Text('Explore'),
               ),
-              ListTile(
-                title: Text('Message', textAlign: TextAlign.right),
-                trailing:
-                    Icon(Icons.message, color: Colors.black12, size: 22.0),
-                onTap: () => Navigator.pop(context),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.history),
+                title: Text('History'),
               ),
-              ListTile(
-                title: Text('Settings', textAlign: TextAlign.right),
-                trailing:
-                    Icon(Icons.settings, color: Colors.black12, size: 22.0),
-                onTap: () => Navigator.pop(context),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.list),
+                title: Text('List'),
               ),
-              ListTile(
-                title: Text('Favorite', textAlign: TextAlign.right),
-                trailing:
-                    Icon(Icons.favorite, color: Colors.black12, size: 22.0),
-                onTap: () => Navigator.pop(context),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text('My'),
               ),
-            ],
-          ),
-        ),
+            ]),
       ),
     );
   }
