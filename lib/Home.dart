@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'ListContainer.dart';
-import 'UserDrawer.dart';
-import 'HomeBottomBar.dart';
+import 'widgets/Home/ListContainer.dart';
+import 'widgets/Home/HomeBottomBar.dart';
+import 'widgets/Home/UserDrawer.dart';
+import 'widgets/Second/Second.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             ListContainer(),
-            Icon(Icons.change_history, size: 100.0, color: Colors.black26),
+            Second(),
             Icon(Icons.directions_bike, size: 100.0, color: Colors.black26),
           ],
         ),

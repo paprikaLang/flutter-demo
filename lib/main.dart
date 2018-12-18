@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'model/post.dart';
-import 'widgets/Home.dart';
-import 'widgets/ListContainer.dart';
+import 'Home.dart';
 
 void main() {
   runApp(App());
@@ -23,16 +21,16 @@ class App extends StatelessWidget {
   }
 }
 
-class Hello extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'hello world',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-            fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black45),
-      ),
-    );
-  }
-}
+// class Hello extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text(
+//         'hello world',
+//         textDirection: TextDirection.ltr,
+//         style: TextStyle(
+//             fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black45),
+//       ),
+//     );
+//   }
+// }
