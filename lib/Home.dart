@@ -3,6 +3,7 @@ import 'widgets/Home/ListContainer.dart';
 import 'widgets/Home/HomeBottomBar.dart';
 import 'widgets/Home/UserDrawer.dart';
 import 'widgets/Second/Second.dart';
+import 'widgets/View/View.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -34,7 +35,7 @@ class Home extends StatelessWidget {
             tabs: <Widget>[
               Tab(icon: Icon(Icons.local_florist)),
               Tab(icon: Icon(Icons.change_history)),
-              Tab(icon: Icon(Icons.directions_bike)),
+              Tab(icon: Icon(Icons.view_column)),
             ],
           ),
         ),
@@ -42,7 +43,7 @@ class Home extends StatelessWidget {
           children: <Widget>[
             ListContainer(),
             Second(),
-            Icon(Icons.directions_bike, size: 100.0, color: Colors.black26),
+            View(),
           ],
         ),
         drawer: UserDrawer(),
