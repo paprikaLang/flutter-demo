@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'Home.dart';
 // import 'Sliver.dart';
 import 'Nav.dart';
+import 'widgets/Home/ListContainer.dart';
 
 void main() {
   runApp(App());
@@ -13,8 +14,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Nav(),
+      // home: ListContainer(),
+      initialRoute: '/',
       routes: {
+        '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
       },
       theme: ThemeData(
