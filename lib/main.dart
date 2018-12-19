@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'Sliver.dart';
 import 'Nav.dart';
 import 'widgets/Home/ListContainer.dart';
+import 'widgets/LogIn/login_form.dart';
 
 void main() {
   runApp(App());
@@ -15,16 +16,17 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/',
+      initialRoute: '/form',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
+        '/form': (context) => LoginForm(),
       },
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-        splashColor: Colors.white54,
-      ),
+          primarySwatch: Colors.orange,
+          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+          splashColor: Colors.white54,
+          accentColor: Color.fromRGBO(233, 33, 33, 1)),
     );
   }
 }
