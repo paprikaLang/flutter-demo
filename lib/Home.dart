@@ -4,12 +4,13 @@ import 'widgets/Home/HomeBottomBar.dart';
 import 'widgets/Home/UserDrawer.dart';
 import 'widgets/Second/Second.dart';
 import 'widgets/View/View.dart';
+import 'widgets/Grid/Grid.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
@@ -36,6 +37,7 @@ class Home extends StatelessWidget {
               Tab(icon: Icon(Icons.local_florist)),
               Tab(icon: Icon(Icons.change_history)),
               Tab(icon: Icon(Icons.view_column)),
+              Tab(icon: Icon(Icons.view_list)),
             ],
           ),
         ),
@@ -44,6 +46,7 @@ class Home extends StatelessWidget {
             ListContainer(),
             Second(),
             View(),
+            GridDemo(),
           ],
         ),
         drawer: UserDrawer(),
