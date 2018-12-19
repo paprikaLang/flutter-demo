@@ -36,6 +36,10 @@ class _RegisterFormState extends State<RegisterForm> {
 
       debugPrint('username: $username');
       debugPrint('password: $password');
+
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('Registering ...'),
+      ));
     } else {
       setState(() {
         _autovalidate = true;
@@ -93,7 +97,7 @@ class _RegisterFormState extends State<RegisterForm> {
               onPressed: submitRegisterForm,
               child: Text(
                 'Register',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, letterSpacing: 2),
               ),
               elevation: .0,
               color: Theme.of(context).accentColor,
