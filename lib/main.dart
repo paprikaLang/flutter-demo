@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'Nav.dart';
 import 'widgets/Home/ListContainer.dart';
 import 'widgets/LogIn/login_form.dart';
+import 'widgets/Card/Cards.dart';
 
 void main() {
   runApp(App());
@@ -16,11 +17,12 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/form',
+      initialRoute: '/card',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
         '/form': (context) => LoginForm(),
+        '/card': (context) => Cards(),
       },
       theme: ThemeData(
           primarySwatch: Colors.orange,
