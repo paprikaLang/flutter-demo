@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/post.dart';
+import './post_show.dart';
 
 class ListContainer extends StatelessWidget {
   Widget _listItemBuilder(BuildContext context, int index) {
@@ -33,7 +34,8 @@ class ListContainer extends StatelessWidget {
                 splashColor: Colors.white.withOpacity(.3),
                 highlightColor: Colors.white.withOpacity(.1),
                 onTap: () {
-                  debugPrint('tap');
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PostShow(post: posts[index])));
                 },
               ),
             ),
