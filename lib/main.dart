@@ -5,6 +5,7 @@ import 'Nav.dart';
 import 'widgets/Home/ListContainer.dart';
 import 'widgets/LogIn/login_form.dart';
 import 'widgets/Card/Cards.dart';
+import 'widgets/Stepper/StepperWork.dart';
 
 void main() {
   runApp(App());
@@ -17,12 +18,13 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/card',
+      initialRoute: '/stepper',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
         '/form': (context) => LoginForm(),
         '/card': (context) => Cards(),
+        '/stepper': (context) => StepperWork()
       },
       theme: ThemeData(
           primarySwatch: Colors.orange,
