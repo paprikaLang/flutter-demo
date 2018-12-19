@@ -13,7 +13,7 @@ class LoginForm extends StatelessWidget {
           padding: EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[TextdfieldDemo()],
+            children: <Widget>[RegisterForm()],
           ),
         ),
       ),
@@ -21,11 +21,60 @@ class LoginForm extends StatelessWidget {
   }
 }
 
-class ThemeDemo extends StatelessWidget {
+class RegisterForm extends StatefulWidget {
+  @override
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  final _registerFormKey = GlobalKey<FormState>();
+  String username, password;
+  void submitRegisterForm() {
+    _registerFormKey.currentState.save();
+    debugPrint('username: $username');
+    debugPrint('password: $password');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).accentColor,
+    return Form(
+      key: _registerFormKey,
+      child: Column(
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'username'.toUpperCase(),
+            ),
+            onSaved: (value) {
+              username = value;
+            },
+          ),
+          TextFormField(
+            obscureText: true, // 输入内容隐藏
+            decoration: InputDecoration(
+              labelText: 'password'.toUpperCase(),
+            ),
+            onSaved: (value) {
+              password = value;
+            },
+          ),
+          SizedBox(
+            height: 32.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              onPressed: submitRegisterForm,
+              child: Text(
+                'Register',
+                style: TextStyle(color: Colors.white),
+              ),
+              elevation: .0,
+              color: Theme.of(context).accentColor,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -70,6 +119,15 @@ class _TextdfieldDemoState extends State<TextdfieldDemo> {
           fillColor: Color.fromRGBO(233, 233, 233, 0.3),
           // border: OutlineInputBorder(),
           border: InputBorder.none),
+    );
+  }
+}
+
+class ThemeDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).accentColor,
     );
   }
 }
