@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ChatHead.dart';
 
 class ChatApp extends StatefulWidget {
   _ChatAppState createState() => _ChatAppState();
@@ -19,8 +20,8 @@ class _ChatAppState extends State<ChatApp> {
             )
           ],
         ),
-        body: Center(
-          child: Text("centered"),
+        body: ListView(
+          children: <Widget>[ChatHead()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -39,6 +40,10 @@ class _ChatAppState extends State<ChatApp> {
             });
           },
         ), //点击'问题' 智能添加required argument item
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
