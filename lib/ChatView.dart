@@ -24,31 +24,35 @@ class _ChatViewState extends State<ChatView> {
       appBar: AppBar(
         title: Text(widget.friendName),
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
-          ChatMessages(
-            isFriend: true,
-            isNotPrevious: true,
-            friendInitial: _friendInitial,
-            message: widget.lastMessage,
+          Flexible(
+            child: ListView(
+              children: <Widget>[
+                ChatMessages(
+                  isFriend: true,
+                  isNotPrevious: true,
+                  friendInitial: _friendInitial,
+                  message: widget.lastMessage,
+                ),
+                // ChatMessages(
+                //   isFriend: false,
+                //   isNotPrevious: true,
+                //   friendInitial: _friendInitial,
+                // ),
+              ],
+            ),
           ),
-          // ChatMessages(
-          //   isFriend: false,
-          //   isNotPrevious: true,
-          //   friendInitial: _friendInitial,
-          // ),
+          Row(
+            children: <Widget>[
+              Expanded(child: TextFormField()),
+              IconButton(
+                icon: Icon(Icons.send),
+                onPressed: () {},
+              )
+            ],
+          ),
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: <Widget>[
-            Expanded(child: Text("text here")),
-            IconButton(
-              icon: Icon(Icons.send),
-              onPressed: () {},
-            )
-          ],
-        ),
       ),
     );
   }
