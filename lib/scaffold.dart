@@ -24,7 +24,7 @@ class _ChatAppState extends State<ChatApp> {
         body: ListView(
           children: <Widget>[
             ChatHead(
-                friendName: "tiyo",
+                friendName: "paprikaLang",
                 lastMessage: "call me later",
                 messageTime: DateTime.now())
           ],
