@@ -7,9 +7,16 @@ class ChatHead extends StatefulWidget {
   final String friendName;
   final String lastMessage;
   final DateTime messageTime;
+  final String avatarUrl;
+  final String friendId;
 
   ChatHead(
-      {Key key, this.friendName: "", this.lastMessage: "", this.messageTime})
+      {Key key,
+      this.friendName: "",
+      this.lastMessage: "",
+      this.messageTime,
+      this.friendId: "",
+      this.avatarUrl: ""})
       : super(key: key);
 }
 
@@ -24,6 +31,7 @@ class _ChatHeadState extends State<ChatHead> {
               return ChatView(
                 friendName: widget.friendName,
                 lastMessage: widget.lastMessage,
+                friendId: widget.friendId,
               );
             },
             fullscreenDialog: true));
@@ -51,11 +59,14 @@ class _ChatHeadState extends State<ChatHead> {
             ),
             CircleAvatar(
               radius: 38.0,
-              child: Text(widget.friendName.substring(0, 1),
-                  style: Theme.of(context)
-                      .textTheme
-                      .display1
-                      .apply(color: Colors.white, fontWeightDelta: 3)),
+              backgroundImage: Image.network(widget.avatarUrl).image,
+              child: widget.avatarUrl == ""
+                  ? Text(widget.friendName.substring(0, 1),
+                      style: Theme.of(context)
+                          .textTheme
+                          .display1
+                          .apply(color: Colors.white, fontWeightDelta: 3))
+                  : Container(),
             ),
           ],
         ),

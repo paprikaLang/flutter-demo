@@ -1,0 +1,25 @@
+{
+  "123": {
+    "avatar": "https://paprika-dev.b0.upaiyun.com/QRHh0i1Wob23MwJXgyVlvnf3lXNYuvYg4kV16xLr.jpeg",
+    "messages": [
+      {
+        "type": "string",
+        "content": "hey what's up",
+        "from": "friend",
+        "display_name": "Thanos"
+      },
+      {
+        "type": "string",
+        "content": "did you see this pic tonight",
+        "from": "friend",
+        "display_name": "Thanos"
+      },
+      {
+        "type": "image/url",
+        "content": "https://paprika-dev.b0.upaiyun.com/QRHh0i1Wob23MwJXgyVlvnf3lXNYuvYg4kV16xLr.jpeg",
+        "from": "friend",
+        "display_name": "Thanos"
+      }
+    ]
+  }
+}

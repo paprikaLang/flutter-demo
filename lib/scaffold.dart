@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'ChatHead.dart';
-import 'ChatView.dart';
+// import 'ChatHead.dart';
+// import 'ChatView.dart';
+import 'views/ChatHistory.dart';
+import 'views/HomeView.dart';
+import 'views/SettingsView.dart';
 
 class ChatApp extends StatefulWidget {
   _ChatAppState createState() => _ChatAppState();
@@ -21,14 +24,7 @@ class _ChatAppState extends State<ChatApp> {
             )
           ],
         ),
-        body: ListView(
-          children: <Widget>[
-            ChatHead(
-                friendName: "paprikaLang",
-                lastMessage: "call me later",
-                messageTime: DateTime.now())
-          ],
-        ),
+        body: selectedScreen(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           items: <BottomNavigationBarItem>[
@@ -53,5 +49,22 @@ class _ChatAppState extends State<ChatApp> {
       ),
       // home: ChatView()
     );
+  }
+
+  Widget selectedScreen(int _index) {
+    switch (_index) {
+      case 0:
+        return HomeView();
+        break;
+      case 1:
+        return ChatHistory();
+        break;
+      case 2:
+        return SettingsView();
+        break;
+      default:
+        return HomeView();
+        break;
+    }
   }
 }
