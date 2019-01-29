@@ -6,6 +6,7 @@ import 'widgets/Home/ListContainer.dart';
 import 'widgets/LogIn/login_form.dart';
 import 'widgets/Card/Cards.dart';
 import 'widgets/Stepper/StepperWork.dart';
+import 'widgets/State/state_management.dart';
 
 void main() {
   runApp(App());
@@ -18,13 +19,14 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/stepper',
+      initialRoute: '/state',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
         '/form': (context) => LoginForm(),
         '/card': (context) => Cards(),
-        '/stepper': (context) => StepperWork()
+        '/stepper': (context) => StepperWork(),
+        '/state': (context) => StateManagement()        
       },
       theme: ThemeData(
           primarySwatch: Colors.orange,
