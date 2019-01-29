@@ -15,33 +15,58 @@ class _StateManagementState extends State<StateManagement> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('State'),
-        elevation: 0.0,
-      ),
-      body: Center(
-        child: Counter(_count, count),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: count,
+    return CounterProvider(
+      count: _count,
+      increaseCount: count,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('State'),
+          elevation: 0.0,
+        ),
+        body: Center(
+          child: Counter(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: count,
+        ),
       ),
     );
   }
 }
 
-class Counter extends StatelessWidget {
-  final int _count;
-  final VoidCallback count;
-  Counter(this._count, this.count);
+class CounterWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ActionChip(
-        label: Text('$_count'),
-        onPressed: count,
-      ),
+      child: Counter(),
     );
+  }
+}
+
+class Counter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final int _count = CounterProvider.of(context).count;
+    final VoidCallback count = CounterProvider.of(context).increaseCount;
+    return ActionChip(
+      label: Text('$_count'),
+      onPressed: count,
+    );
+  }
+}
+
+class CounterProvider extends InheritedWidget {
+  final int count;
+  final VoidCallback increaseCount;
+  final Widget child;
+  CounterProvider({this.count, this.increaseCount, this.child})
+      : super(child: child);
+  static CounterProvider of(BuildContext context) =>
+      context.inheritFromWidgetOfExactType(CounterProvider);
+
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) {
+    return true;
   }
 }
