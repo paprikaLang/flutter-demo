@@ -7,6 +7,7 @@ import 'widgets/LogIn/login_form.dart';
 import 'widgets/Card/Cards.dart';
 import 'widgets/Stepper/StepperWork.dart';
 import 'widgets/State/state_management.dart';
+import 'widgets/Stream/stream_demo.dart';
 
 void main() {
   runApp(App());
@@ -19,14 +20,15 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/state',
+      initialRoute: '/stream',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
         '/form': (context) => LoginForm(),
         '/card': (context) => Cards(),
         '/stepper': (context) => StepperWork(),
-        '/state': (context) => StateManagement()        
+        '/state': (context) => StateManagement(),
+        '/stream': (context) => StreamDemo(),
       },
       theme: ThemeData(
           primarySwatch: Colors.orange,
