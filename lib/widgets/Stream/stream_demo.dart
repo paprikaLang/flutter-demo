@@ -16,12 +16,27 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamSubscription;
+  StreamController<String> _streamController;
+  StreamSink _sink;
+
   @override
   void initState() {
     super.initState();
-    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
-    _streamSubscription =
-        _streamDemo.listen(onData, onError: onError, onDone: onDone);
+    // Stream<String> _streamDemo = Stream.fromFuture(fetchData());
+    // _streamController = StreamController<String>();
+    _streamController = StreamController.broadcast();
+    // _streamSubscription =
+    //     _streamDemo.listen(onData, onError: onEror, onDone: onDone);
+    _streamSubscription = _streamController.stream
+        .listen(onData, onDone: onDone, onError: onError);
+    _streamController.stream.listen(onDatas, onDone: onDone, onError: onError);
+    _sink = _streamController.sink;
+  }
+
+  @override
+  void dispose() {
+    _streamController.close();
+    super.dispose();
   }
 
   void onDone() {
@@ -34,6 +49,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   void onData(String data) {
     print('listen: $data');
+  }
+
+  void onDatas(String data) {
+    print('listenonDatas: $data');
   }
 
   void _onPause() {
@@ -49,6 +68,13 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   void _onCancel() {
     _streamSubscription.cancel();
     print('subscription cancel');
+  }
+
+  void _onAddDataToStream() async {
+    print('add data to stream.');
+    String data = await fetchData();
+    // _streamController.add(data);
+    _sink.add(data);
   }
 
   Future<String> fetchData() async {
@@ -76,6 +102,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
               FlatButton(
                 child: Text('cancel'),
                 onPressed: _onCancel,
+              ),
+              FlatButton(
+                child: Text('addDataToStream'),
+                onPressed: _onAddDataToStream,
               ),
             ],
           ),
