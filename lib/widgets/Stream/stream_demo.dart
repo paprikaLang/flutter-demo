@@ -18,6 +18,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamSubscription;
   StreamController<String> _streamController;
   StreamSink _sink;
+  // String _data = '... ...'; streambuilder节省了setstate
 
   @override
   void initState() {
@@ -49,6 +50,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   void onData(String data) {
     print('listen: $data');
+    // setState(() {
+    //   _data = data;
+    // });
   }
 
   void onDatas(String data) {
@@ -80,7 +84,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   Future<String> fetchData() async {
     await Future.delayed(Duration(seconds: 5));
     //throw 'sth wrong'; //出现异常按F5继续执行
-    return 'hello world';
+    return 'hello world ~~';
   }
 
   @override
@@ -88,24 +92,37 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     return Container(
       child: Container(
         child: Center(
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
-                child: Text('Pause'),
-                onPressed: _onPause,
+              // Text(_data), streambuilder 会根据stream中的数据重新创建部件,而不必再setstate了
+              StreamBuilder(
+                stream: _streamController.stream,
+                initialData: '... ...',
+                builder: (context, snapshot) {
+                  return Text('${snapshot.data}');
+                },
               ),
-              FlatButton(
-                child: Text('Resume'),
-                onPressed: _onResume,
-              ),
-              FlatButton(
-                child: Text('cancel'),
-                onPressed: _onCancel,
-              ),
-              FlatButton(
-                child: Text('addDataToStream'),
-                onPressed: _onAddDataToStream,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('Pause'),
+                    onPressed: _onPause,
+                  ),
+                  FlatButton(
+                    child: Text('Resume'),
+                    onPressed: _onResume,
+                  ),
+                  FlatButton(
+                    child: Text('cancel'),
+                    onPressed: _onCancel,
+                  ),
+                  FlatButton(
+                    child: Text('addDataToStream'),
+                    onPressed: _onAddDataToStream,
+                  ),
+                ],
               ),
             ],
           ),
