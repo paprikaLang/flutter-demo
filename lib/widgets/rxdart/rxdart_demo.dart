@@ -33,11 +33,18 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
     // Observable.just('hello just');
     // Observable.periodic(Duration(seconds: 1), (x) => x.toString());
     // _observable.listen(print);
-    PublishSubject<String> _subject = PublishSubject<String>();
+
+    //如果是BehaviorSubject, 只取最后一次add, 进行listen
+    // PublishSubject<String> _subject = PublishSubject<String>();
+    ReplaySubject<String> _subject = ReplaySubject<String>(maxSize: 2);
+    _subject.add('add hello');
+    _subject.add('add world');
+    _subject.add('3rd add');
     _subject.listen((data) => print('listen on 1: $data'));
-    _subject.add('add data to stream');
+
     _subject.listen((data) => print('listen on 2: ${data.toUpperCase()}'));
-    _subject.add('resume'); //subject 相当于Stream中的Controller, 控制着Observable
+
+    //subject 相当于Stream中的Controller, 控制着Observable
     _subject.close();
   }
 
