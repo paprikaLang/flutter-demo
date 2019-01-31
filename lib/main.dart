@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/widgets/Bloc/bloc_demo.dart';
 import 'package:flutter_demo/widgets/rxdart/rxdart_demo.dart';
 // import 'Home.dart';
 // import 'Sliver.dart';
@@ -21,7 +22,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: ListContainer(),
-      initialRoute: '/rxdart',
+      initialRoute: '/bloc',
       routes: {
         '/': (context) => ListContainer(),
         '/about': (context) => Page(title: 'about'),
@@ -31,6 +32,7 @@ class App extends StatelessWidget {
         '/state': (context) => StateManagement(),
         '/stream': (context) => StreamDemo(),
         '/rxdart': (context) => RxDartDemo(),
+        '/bloc': (context) => BlocDemo()
       },
       theme: ThemeData(
           primarySwatch: Colors.orange,
